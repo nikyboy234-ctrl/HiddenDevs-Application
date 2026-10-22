@@ -1,7 +1,7 @@
 -- Connected Discord-GitHub
 
 -- grab the services we need to use
-local players = game:GetService("Players") --im using getservice as it guarentees the server exists and yeilds
+local players = game:GetService("Players") --im using getservice as it guarentees the service exists and yeilds
 local runService = game:GetService("RunService")
 local serverStorage = game:GetService("ServerStorage")
 local physicsService = game:GetService("PhysicsService")
@@ -43,7 +43,7 @@ physicsService:CollisionGroupSetCollidable(petsCollisionGroup, playersCollisionG
 physicsService:CollisionGroupSetCollidable(petsCollisionGroup, petsCollisionGroup, false)
 
 -- folder in ServerStorage that holds the pet models we clone from
-local petTemplates = serverStorage:WaitForChild("PetTemplates")
+local petTemplates = serverStorage:WaitForChild("Pets")
 
 -- folder in the workspace where all spawned pets will live
 local activePetsFolder = workspace:FindFirstChild("ActivePets")
@@ -168,7 +168,7 @@ function pet.new(owner, template)
 		alignOri.CFrame = root.CFrame
 	end
 	clone.Parent = activePetsFolder	-- put the pet into the workspace
-	if root:CanSetNetworkOwner() then	-- give control of the pet's physics to the owning player's computer
+	if root:CanSetNetworkOwnership() then	-- give control of the pet's physics to the owning player's computer
 		root:SetNetworkOwner(owner)	-- this keeps the pet moving smoothly on their screen instead of stuttering
 	end	-- pets give no gameplay advantage, so letting the owner's client simulate them carries no real risk
 	return self
