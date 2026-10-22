@@ -1,4 +1,5 @@
 -- Connected Discord-GitHub
+-- made by Nikyboy (RobloxID: 1131869430, DiscordID: 967342067212775424)
 
 -- grab the services we need to use
 local players = game:GetService("Players") --im using getservice as it guarentees the service exists and yeilds
